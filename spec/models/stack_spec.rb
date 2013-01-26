@@ -12,16 +12,13 @@ describe Stack do
 	it {should respond_to(:push)}
 	it {should respond_to(:length)}
 	
-	
-	
 	context 'when an item is pushed' do
 	  it 'should increase the length of the stack' do
 	    expect {@stack.push(3)}.to change {@stack.length}.by(1)
 	  end
 	  
 	  it 'should return the item that is pushed' do
-	    x = @stack.push 3
-	    x.should == 3
+	    @stack.push(3).should == 3
 	  end
 	end
 	
@@ -35,8 +32,29 @@ describe Stack do
 	  end
 	  
 	  it 'should return the item that is popped' do
-	    x = @stack.pop
-	    x == 4
+	    @stack.pop.should == 4
+	  end
+	end
+	
+	context 'when peeking at an item' do
+	  before do
+      @stack.push(3)
+      @stack.push(2)
+      @stack.push(1)
+    end
+	  
+	  it 'should return the item at the head' do
+	    subject.peek.should == 1
+	  end
+	  
+	  it 'should change after a push' do
+	    subject.push 4
+	    subject.peek.should == 4
+	  end
+	  
+	  it 'should change after a pop' do
+	    subject.pop 
+	    subject.peek.should == 2
 	  end
 	end
 	

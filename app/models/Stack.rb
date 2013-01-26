@@ -5,7 +5,7 @@ class Stack
   end
   
   def peek
-    
+    @items[0]
   end
   
   def push(item)
